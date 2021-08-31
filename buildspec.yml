@@ -10,6 +10,8 @@ phases:
     commands:
       - echo "Building from trigger -> $CODEBUILD_WEBHOOK_TRIGGER <- with dev dependencies"
       - composer install --no-interaction --prefer-dist --optimize-autoloader
+      - cp .env.example .env
+      - php artisan key:generate
   pre_build:
     commands:
       - php artisan test
