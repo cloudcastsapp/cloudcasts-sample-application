@@ -17,13 +17,10 @@ phases:
       - php artisan test
   build:
     commands:
-      - echo "todo -> Build an artifact"
+      - echo "todo -> Build production libraries/assets"
+      - echo "todo -> Create production .env file"
+      - echo "todo -> Create .zip archive"
+      - echo "todo -> Upload to S3"
   post_build:
     commands:
       - echo "todo -> Kick off a deployment"
-artifacts:
-  files:
-    - "**/*"
-  name: $CODEBUILD_RESOLVED_SOURCE_VERSION
- #discard-paths: no
- #base-directory: location
