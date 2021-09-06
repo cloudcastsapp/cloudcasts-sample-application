@@ -3,6 +3,7 @@
 # Production assets/dependencies
 npm install
 npm run production
+composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev
 
 # TODO: Generate a .env file
 
