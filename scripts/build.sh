@@ -5,7 +5,12 @@ npm install
 npm run production
 composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev
 
-# TODO: Generate a .env file
+# Generate a .env file
+aws --region us-east-2 ssm get-parameter \
+    --with-decryption \
+    --name /cloudcasts/staging/env \
+    --output text \
+    --query 'Parameter.Value' > .env
 
 # Create our build artifact
 git archive -o builds/cloudcasts.zip --worktree-attributes HEAD
