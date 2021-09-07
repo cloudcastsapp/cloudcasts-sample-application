@@ -7,11 +7,11 @@ permissions:
   - object: /home/cloudcasts/cloudcasts.io
     owner: cloudcasts
     group: cloudcasts
-#hooks:
-#  BeforeInstall:
-#    - location: scripts/install_dependencies.sh
-#      timeout: 300
-#      runas: root
+hooks:
+  BeforeInstall:
+    - location: scripts/before_install.sh
+      timeout: 30
+      runas: root
 #  AfterInstall:
 #    - location: scripts/change_permissions.sh
 #      timeout: 300
