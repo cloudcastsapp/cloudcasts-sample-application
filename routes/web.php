@@ -18,5 +18,5 @@ Route::get('/', function () {
 });
 
 Route::get('/new', function() {
-    return 'this is new!';
+    return 'this is even newer!';
 });
