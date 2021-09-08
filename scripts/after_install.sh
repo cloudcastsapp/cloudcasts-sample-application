@@ -11,8 +11,18 @@ aws --region us-east-2 ssm get-parameter \
 # Set permissions
 chown -R cloudcasts:cloudcasts /home/cloudcasts/cloudcasts.io
 
-# Reload php-fpm (clear opcache) if running
-systemctl is-active --quiet php8.0-fpm && service php8.0-fpm reload
+# Below conditional syntax from here:
+# https://stackoverflow.com/questions/229551/how-to-check-if-a-string-contains-a-substring-in-bash
+
+# Env var available for appspec hooks:
+# https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-hooks.html#reference-appspec-file-structure-environment-variable-availability
+
+# Reload php-fpm (clear opcache) if a web server
+if [[ "$DEPLOYMENT_GROUP_NAME" == *"http"* ]]; then
+    service php8.0-fpm reload
+fi
 
 # Start supervisor jobs (if supervisor is used)
-systemctl is-active --quiet supervisor && supervisorctl start all
+if [[ "$DEPLOYMENT_GROUP_NAME" == *"queue"* ]]; then
+    supervisorctl start all
+fi

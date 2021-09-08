@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
 # Stop supervisor jobs (if supervisor is used)
-systemctl is-active --quiet supervisor && supervisorctl stop all
+if [[ "$DEPLOYMENT_GROUP_NAME" == *"queue"* ]]; then
+    supervisorctl stop all
+fi
 
 rm -rf /home/cloudcasts/cloudcasts.io
