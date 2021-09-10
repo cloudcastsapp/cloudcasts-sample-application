@@ -26,3 +26,6 @@ fi
 if [[ "$DEPLOYMENT_GROUP_NAME" == *"queue"* ]]; then
     supervisorctl start all
 fi
+
+# Optionally, depending on your needs
+# sudo -u cloudcasts php artisan migrate --force

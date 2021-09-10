@@ -20,4 +20,4 @@ phases:
       - ./scripts/build.sh staging
   post_build:
     commands:
-      - echo "todo -> Kick off a deployment"
+      - ./scripts/deploy.sh staging
