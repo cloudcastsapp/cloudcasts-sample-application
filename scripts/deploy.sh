@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 
-# Let's confirm we're doing what we suspect
-echo $CODEBUILD_WEBHOOK_TRIGGER
-exit 0
-
 DEPLOY_ENV="nah"
 
 if [[ "$CODEBUILD_WEBHOOK_TRIGGER" == "branch/main" ]]; then
