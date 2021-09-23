@@ -17,7 +17,7 @@ phases:
       - php artisan test
   build:
     commands:
-      - ./scripts/build.sh staging
+      - ./scripts/build.sh
   post_build:
     commands:
-      - ./scripts/deploy.sh staging
+      - ./scripts/deploy.sh
