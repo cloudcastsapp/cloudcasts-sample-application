@@ -1,23 +1,45 @@
 # Ref: https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html
+
 # Runtime Versions: https://docs.aws.amazon.com/codebuild/latest/userguide/runtime-versions.html
+
 version: 0.2
+
 run-as: root
+
 phases:
+
   install:
+
     runtime-versions:
+
       php: 8.0
+
       nodejs: 14
+
     commands:
+
       - echo "Building from trigger -> $CODEBUILD_WEBHOOK_TRIGGER <- with dev dependencies"
+
       - composer install --no-interaction --prefer-dist --optimize-autoloader
+
       - cp .env.example .env
+
       - php artisan key:generate
+
   pre_build:
+
     commands:
+
       - php artisan test
+
   build:
+
     commands:
-      - ./scripts/build.sh
+
+      - echo "todo -> Build an artifact"
+
   post_build:
+
     commands:
-      - ./scripts/deploy.sh
+
+      - echo "todo -> Kick off a deployment"
