@@ -36,22 +36,10 @@ phases:
 
     commands:
 
-      - echo "todo -> Build an artifact"
+      - ./scripts/build.sh staging
 
   post_build:
 
     commands:
 
       - echo "todo -> Kick off a deployment"
-
-artifacts:
-
-  files:
-
-    - "**/*"
-
-  name: $CODEBUILD_RESOLVED_SOURCE_VERSION
-
-  #discard-paths: no
-
-  #base-directory: location #
