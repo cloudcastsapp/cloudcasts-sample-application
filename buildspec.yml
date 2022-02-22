@@ -43,3 +43,15 @@ phases:
     commands:
 
       - echo "todo -> Kick off a deployment"
+
+artifacts:
+
+  files:
+
+    - "**/*"
+
+  name: $CODEBUILD_RESOLVED_SOURCE_VERSION
+
+  #discard-paths: no
+
+  #base-directory: location #
